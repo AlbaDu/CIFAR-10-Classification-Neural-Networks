@@ -2,21 +2,16 @@
 import keras
 from keras.datasets import cifar10
 
-def load_dataset():
+def data_cat(variable):
     """
     ---What it does---
         +Load the Cifar-10 dataset from keras library and transform the labels into categorical features.   
     ---What it returns---
-        - train_X
-        - test_X
-        - train_y
-        - test_y 
+        - variable_cat: categorized variable. 
     """  
-    (train_X, train_y),(test_X, test_y) = cifar10.load_data()
-	train_y = to_categorical(train_y)
-	test_y = to_categorical(test_y)
-	return train_X, train_y, test_X, test_y
-
+	variable_cat = to_categorical(variable)
+	return variable_cat
+    
 def data_norm(variable):
     """
     ---What it does---
@@ -28,4 +23,3 @@ def data_norm(variable):
     """    
     variable_norm = variable.astype('float32')/ 255.0
     return variable_norm
-
